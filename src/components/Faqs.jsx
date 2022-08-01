@@ -107,3 +107,26 @@ export function Faqs() {
     </section>
   )
 }
+
+export async function getStaticProps() {
+  const GET_FAQS = gql`
+    query NewQuery {
+      fAQs {
+        nodes {
+          id
+          title
+          content
+        }
+      }
+    }
+  `
+  const response = await client.query({
+    query: GET_FAQS,
+  })
+  const faqs = response?.data?.fAQs?.edges
+  return {
+    props: {
+      faqs,
+    },
+  }
+}
