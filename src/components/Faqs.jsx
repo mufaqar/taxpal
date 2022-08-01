@@ -2,62 +2,8 @@ import Image from 'next/image'
 import { Container } from '@/components/Container'
 import backgroundImage from '@/images/background-faqs.jpg'
 
-const faqs = [
-  [
-    {
-      question: 'Does TaxPal handle VAT?',
-      answer:
-        'Well no, but if you move your company offshore you can probably ignore it.',
-    },
-    {
-      question: 'Can I pay for my subscription via purchase order?',
-      answer: 'Absolutely, we are happy to take your money in all forms.',
-    },
-    {
-      question: 'How do I apply for a job at TaxPal?',
-      answer:
-        'We only hire our customers, so subscribe for a minimum of 6 months and then let’s talk.',
-    },
-  ],
-  [
-    {
-      question: 'What was that testimonial about tax fraud all about?',
-      answer:
-        'TaxPal is just a software application, ultimately your books are your responsibility.',
-    },
-    {
-      question:
-        'TaxPal sounds horrible but why do I still feel compelled to purchase?',
-      answer:
-        'This is the power of excellent visual design. You just can’t resist it, no matter how poorly it actually functions.',
-    },
-    {
-      question:
-        'I found other companies called TaxPal, are you sure you can use this name?',
-      answer:
-        'Honestly not sure at all. We haven’t actually incorporated or anything, we just thought it sounded cool and made this website.',
-    },
-  ],
-  [
-    {
-      question: 'How do you generate reports?',
-      answer:
-        'You just tell us what data you need a report for, and we get our kids to create beautiful charts for you using only the finest crayons.',
-    },
-    {
-      question: 'Can we expect more inventory features?',
-      answer: 'In life it’s really better to never expect anything at all.',
-    },
-    {
-      question: 'I lost my password, how do I get into my account?',
-      answer:
-        'Send us an email and we will send you a copy of our latest password spreadsheet so you can find your information.',
-    },
-  ],
-]
 
-export function Faqs() {
-
+export function Faqs({faqs}) {
   return (
     <section
       id="faq"
@@ -91,7 +37,7 @@ export function Faqs() {
           {faqs.map((column, columnIndex) => (
             <li key={columnIndex}>
               <ul className="space-y-8">
-                {column.map((faq, faqIndex) => (
+                {column.faqRow.row.map((faq, faqIndex) => (
                   <li key={faqIndex}>
                     <h3 className="text-lg leading-7 font-display text-slate-900">
                       {faq.question}
@@ -108,28 +54,3 @@ export function Faqs() {
   )
 }
 
-export async function getStaticProps() {
-  const GET_FAQS = gql`
-    query NewQuery {
-      fAQs {
-        nodes {
-          id
-          title
-          content
-        }
-      }
-    }
-  `
-  const response = await client.query({
-    query: GET_FAQS,
-  })
-
-  console.warn(GET_FAQS)
-
-  const faqs = response?.data?.fAQs?.edges
-  return {
-    props: {
-      faqs,
-    },
-  }
-}
