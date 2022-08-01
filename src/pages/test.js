@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import { gql } from '@apollo/client'
 import { client } from '../../lib/apollo'
-
 import { Container } from '@/components/Container'
 import backgroundImage from '@/images/background-faqs.jpg'
 

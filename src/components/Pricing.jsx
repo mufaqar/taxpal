@@ -104,39 +104,53 @@ export function Pricing() {
             work well for you.
           </p>
         </div>
-          <Plan
-            name="Starter"
-            price="Free"
-            description="Start for free"
-            href="/register"
-            features={[
-              'Up to 50 bookmarks',
-              'Bookmark Preview',
-              'Advanced Search',
-              'Bookmark Tags',
-              'Access on Mobile, Tablet',
-              'Unlimited Devices'
-            ]}
-          />
-          <Plan
-            featured
-            name="Pro"
-            price="$2/month"
-            tip=""
-            description="Billed as $24 yearly (auto-renewal)"
-            href="/register"
-            features={[
-              'Unlimited Bookmarks',
-              'Bookmark Preview',
-              'Advanced Search',
-              'Bookmark Tags',
-              'Access on Mobile, Tablet',
-              'Unlimited Devices',
-              'Priority support'
-            ]}
-          />
-
-
+        <Plan
+          name="Starter"
+          price="Free"
+          description="Start for free"
+          href="/register"
+          features={[
+            'Up to 50 bookmarks',
+            'Bookmark Preview',
+            'Advanced Search',
+            'Bookmark Tags',
+            'Access on Mobile, Tablet',
+            'Unlimited Devices',
+          ]}
+        />
+        <Plan
+          featured
+          name="Pro"
+          price="$2/month"
+          tip=""
+          description="Billed as $24 yearly (auto-renewal)"
+          href="/register"
+          features={[
+            'Unlimited Bookmarks',
+            'Bookmark Preview',
+            'Advanced Search',
+            'Bookmark Tags',
+            'Access on Mobile, Tablet',
+            'Unlimited Devices',
+            'Priority support',
+          ]}
+        />
+        <Plan
+          name="Pro"
+          price="$2/month"
+          tip=""
+          description="Billed as $24 yearly (auto-renewal)"
+          href="/register"
+          features={[
+            'Unlimited Bookmarks',
+            'Bookmark Preview',
+            'Advanced Search',
+            'Bookmark Tags',
+            'Access on Mobile, Tablet',
+            'Unlimited Devices',
+            'Priority support',
+          ]}
+        />
       </Container>
     </section>
   )
