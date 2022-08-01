@@ -11,7 +11,7 @@ function Plan({ name, price, description, href, features, featured = false }) {
         'lg:py-8': !featured,
       })}
     >
-      <h3 className="mt-5 font-display text-lg text-white">{name}</h3>
+      <h3 className="mt-5 text-lg text-white font-display">{name}</h3>
       <p
         className={clsx('mt-2 text-base', {
           'text-white': featured,
@@ -20,7 +20,7 @@ function Plan({ name, price, description, href, features, featured = false }) {
       >
         {description}
       </p>
-      <p className="order-first font-display text-5xl font-light tracking-tight text-white">
+      <p className="order-first text-5xl font-light tracking-tight text-white font-display">
         {price}
       </p>
       <ul
@@ -74,14 +74,14 @@ export function Pricing() {
     <section
       id="pricing"
       aria-labelledby="pricing-title"
-      className="bg-slate-900 py-20 sm:py-32"
+      className="py-20 bg-slate-900 sm:py-32"
     >
       <h2 id="pricing-title" className="sr-only">
         Pricing
       </h2>
       <Container>
         <div className="md:text-center">
-          <p className="font-display text-3xl tracking-tight text-white sm:text-4xl">
+          <p className="text-3xl tracking-tight text-white font-display sm:text-4xl">
             <span className="relative whitespace-nowrap">
               <svg
                 aria-hidden="true"
@@ -104,6 +104,8 @@ export function Pricing() {
             work well for you.
           </p>
         </div>
+          <div className='grid max-w-2xl grid-cols-1 mt-16 -mx-4 gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:gap-x-8'>
+
           <Plan
             name="Starter"
             price="Free"
@@ -135,6 +137,24 @@ export function Pricing() {
               'Priority support'
             ]}
           />
+           <Plan
+            name="Starter"
+            price="Free"
+            description="Start for free"
+            href="/register"
+            features={[
+              'Up to 50 bookmarks',
+              'Bookmark Preview',
+              'Advanced Search',
+              'Bookmark Tags',
+              'Access on Mobile, Tablet',
+              'Unlimited Devices'
+            ]}
+            />
+
+
+          </div>
+          
 
 
       </Container>
