@@ -11,8 +11,8 @@ import { PrimaryFeatures } from '@/components/PrimaryFeatures'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { Testimonials } from '@/components/Testimonials'
 
-export default function Home({fAQs}) {
-  console.log('faqs', fAQs)
+export default function Home({ faqs, testimonials }) {
+  
   return (
     <>
       <Head>
@@ -28,36 +28,59 @@ export default function Home({fAQs}) {
         <PrimaryFeatures />
         <SecondaryFeatures />
         <CallToAction />
-        <Testimonials />
+        <Testimonials testimonialss={testimonials}/>
         <Pricing />
-        <Faqs />
+        <Faqs faqs={faqs} />
       </main>
       <Footer />
     </>
   )
 }
 
-
-
-
 export async function getStaticProps() {
-  const GET_FAQs = gql`
+  const GET_POSTS = gql`
     query GETFAQS {
       fAQs {
         nodes {
+          title
+          id
+          faqRow {
+            row {
+              question
+              answer
+            }
+          }
+        }
+      }
+      testimonials {
+        nodes {
           id
           title
+          testimonial {
+            row {
+              userName
+              designation
+              contnet
+              profileImage {
+                mediaItemUrl
+              }
+            }
+          }
         }
       }
     }
   `
   const response = await client.query({
-    query: GET_FAQs,
+    query: GET_POSTS,
   })
-  const fAQs = response?.data
+
+  const faqs = response?.data?.fAQs.nodes
+  const testimonials = response?.data?.testimonials.nodes
+
   return {
     props: {
-      fAQs,
+      faqs,
+      testimonials,
     },
   }
 }

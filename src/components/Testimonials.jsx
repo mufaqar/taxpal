@@ -70,18 +70,21 @@ const testimonials = [
   ],
 ]
 
-export function Testimonials() {
+export function Testimonials({testimonialss}) {
+
+  console.warn('tes..........', testimonialss)
+
   return (
     <section
       id="testimonials"
       aria-labelledby="testimonials-title"
-      className="bg-slate-50 py-20 sm:py-32"
+      className="py-20 bg-slate-50 sm:py-32"
     >
       <Container>
-        <div className="mx-auto max-w-2xl md:text-center">
+        <div className="max-w-2xl mx-auto md:text-center">
           <h2
             id="testimonials-title"
-            className="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl"
+            className="text-3xl tracking-tight font-display text-slate-900 sm:text-4xl"
           >
             Loved by businesses worldwide.
           </h2>
@@ -91,13 +94,13 @@ export function Testimonials() {
             mission-critical features.
           </p>
         </div>
-        <ul className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mt-20 lg:max-w-none lg:grid-cols-3">
-          {testimonials.map((column, columnIndex) => (
+        <ul className="grid max-w-2xl grid-cols-1 gap-6 mx-auto mt-16 sm:gap-8 lg:mt-20 lg:max-w-none lg:grid-cols-3">
+          {testimonialss.map((column, columnIndex) => (
             <li key={columnIndex}>
               <ul className="space-y-6 sm:space-y-8">
-                {column.map((testimonial, testimonialIndex) => (
+                {column.testimonial.row.map((testimonial, testimonialIndex) => (
                   <li key={testimonialIndex}>
-                    <figure className="relative rounded-2xl bg-white p-6 shadow-xl shadow-slate-900/10">
+                    <figure className="relative p-6 bg-white shadow-xl rounded-2xl shadow-slate-900/10">
                       <svg
                         aria-hidden="true"
                         width={105}
@@ -108,20 +111,20 @@ export function Testimonials() {
                       </svg>
                       <blockquote className="relative">
                         <p className="text-lg tracking-tight text-slate-900">
-                          {testimonial.content}
+                          {testimonial.contnet}
                         </p>
                       </blockquote>
-                      <figcaption className="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6">
+                      <figcaption className="relative flex items-center justify-between pt-6 mt-6 border-t border-slate-100">
                         <div>
-                          <div className="font-display text-base text-slate-900">
-                            {testimonial.author.name}
+                          <div className="text-base font-display text-slate-900">
+                            {testimonial.userName}
                           </div>
                           <div className="mt-1 text-sm text-slate-500">
-                            {testimonial.author.role}
+                            {testimonial.designation}
                           </div>
                         </div>
-                        <div className="h-14 w-14 overflow-hidden rounded-full bg-slate-50">
-                          <Image src={testimonial.author.image} alt="" />
+                        <div className="overflow-hidden rounded-full h-14 w-14 bg-slate-50">
+                          <Image src={testimonial.profileImage.mediaItemUrl} alt="" width={60} height={60} />
                         </div>
                       </figcaption>
                     </figure>

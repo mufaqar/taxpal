@@ -6,12 +6,12 @@ import { Container } from '@/components/Container'
 import backgroundImage from '@/images/background-faqs.jpg'
 
 export default function Test({ jobs }) {
-  console.log(jobs)
+  // console.log(jobs)
   return (
     <section
       id="faq"
       aria-labelledby="faq-title"
-      className="relative overflow-hidden bg-slate-50 py-20 sm:py-32"
+      className="relative py-20 overflow-hidden bg-slate-50 sm:py-32"
     >
       <h2 id="faq-title" className="sr-only">
         Frequently asked questions
@@ -27,8 +27,8 @@ export default function Test({ jobs }) {
         />
       </div>
       <Container className="relative">
-        <div className="mx-auto max-w-2xl lg:mx-0">
-          <p className="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl">
+        <div className="max-w-2xl mx-auto lg:mx-0">
+          <p className="text-3xl tracking-tight font-display text-slate-900 sm:text-4xl">
             Frequently asked questions
           </p>
           <p className="mt-4 text-lg tracking-tight text-slate-700">
@@ -36,7 +36,7 @@ export default function Test({ jobs }) {
             and if you’re lucky someone will get back to you.
           </p>
         </div>
-        <ul className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-3">
+        <ul className="grid max-w-2xl grid-cols-1 gap-8 mx-auto mt-16 lg:max-w-none lg:grid-cols-3">
           {jobs.map((job) => (
             <div>
               <h2 key={job.id}>{job.title}</h2>
