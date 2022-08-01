@@ -123,6 +123,9 @@ export async function getStaticProps() {
   const response = await client.query({
     query: GET_FAQS,
   })
+
+  console.warn(GET_FAQS)
+
   const faqs = response?.data?.fAQs?.edges
   return {
     props: {
