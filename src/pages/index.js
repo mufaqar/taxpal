@@ -11,8 +11,7 @@ import { PrimaryFeatures } from '@/components/PrimaryFeatures'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { Testimonials } from '@/components/Testimonials'
 
-export default function Home({ faqs, testimonials }) {
-  
+export default function Home({ faqs, testimonials,taxCompliances }) {
   return (
     <>
       <Head>
@@ -25,10 +24,10 @@ export default function Home({ faqs, testimonials }) {
       <Header />
       <main>
         <Hero />
-        <PrimaryFeatures />
+        <PrimaryFeatures taxCompliances={taxCompliances}/>
         <SecondaryFeatures />
         <CallToAction />
-        <Testimonials testimonialss={testimonials}/>
+        <Testimonials testimonialss={testimonials} />
         <Pricing />
         <Faqs faqs={faqs} />
       </main>
@@ -68,6 +67,18 @@ export async function getStaticProps() {
           }
         }
       }
+      taxCompliances {
+        nodes {
+          title
+          content
+          id
+          featuredImage {
+            node {
+              mediaItemUrl
+            }
+          }
+        }
+      }
     }
   `
   const response = await client.query({
@@ -76,11 +87,13 @@ export async function getStaticProps() {
 
   const faqs = response?.data?.fAQs.nodes
   const testimonials = response?.data?.testimonials.nodes
+  const taxCompliances = response?.data?.taxCompliances.nodes
 
   return {
     props: {
       faqs,
       testimonials,
+      taxCompliances,
     },
   }
 }

@@ -151,12 +151,7 @@ export function Pricing() {
               'Unlimited Devices'
             ]}
             />
-
-
-          </div>
-          
-
-
+          </div>       
       </Container>
     </section>
   )
