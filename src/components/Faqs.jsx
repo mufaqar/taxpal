@@ -1,5 +1,4 @@
 import Image from 'next/image'
-
 import { Container } from '@/components/Container'
 import backgroundImage from '@/images/background-faqs.jpg'
 
@@ -58,11 +57,12 @@ const faqs = [
 ]
 
 export function Faqs() {
+
   return (
     <section
       id="faq"
       aria-labelledby="faq-title"
-      className="relative overflow-hidden bg-slate-50 py-20 sm:py-32"
+      className="relative py-20 overflow-hidden bg-slate-50 sm:py-32"
     >
       <h2 id="faq-title" className="sr-only">
         Frequently asked questions
@@ -78,8 +78,8 @@ export function Faqs() {
         />
       </div>
       <Container className="relative">
-        <div className="mx-auto max-w-2xl lg:mx-0">
-          <p className="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl">
+        <div className="max-w-2xl mx-auto lg:mx-0">
+          <p className="text-3xl tracking-tight font-display text-slate-900 sm:text-4xl">
             Frequently asked questions
           </p>
           <p className="mt-4 text-lg tracking-tight text-slate-700">
@@ -87,13 +87,13 @@ export function Faqs() {
             and if you’re lucky someone will get back to you.
           </p>
         </div>
-        <ul className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-3">
+        <ul className="grid max-w-2xl grid-cols-1 gap-8 mx-auto mt-16 lg:max-w-none lg:grid-cols-3">
           {faqs.map((column, columnIndex) => (
             <li key={columnIndex}>
               <ul className="space-y-8">
                 {column.map((faq, faqIndex) => (
                   <li key={faqIndex}>
-                    <h3 className="font-display text-lg leading-7 text-slate-900">
+                    <h3 className="text-lg leading-7 font-display text-slate-900">
                       {faq.question}
                     </h3>
                     <p className="mt-4 text-sm text-slate-700">{faq.answer}</p>

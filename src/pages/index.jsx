@@ -1,5 +1,6 @@
 import Head from 'next/head'
-
+import { gql } from '@apollo/client'
+import { client } from '../../lib/apollo'
 import { CallToAction } from '@/components/CallToAction'
 import { Faqs } from '@/components/Faqs'
 import { Footer } from '@/components/Footer'
@@ -10,7 +11,8 @@ import { PrimaryFeatures } from '@/components/PrimaryFeatures'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { Testimonials } from '@/components/Testimonials'
 
-export default function Home() {
+export default function Home({fAQs}) {
+  console.log('faqs', fAQs)
   return (
     <>
       <Head>
@@ -33,4 +35,29 @@ export default function Home() {
       <Footer />
     </>
   )
+}
+
+
+
+
+export async function getStaticProps() {
+  const GET_FAQs = gql`
+    query GETFAQS {
+      fAQs {
+        nodes {
+          id
+          title
+        }
+      }
+    }
+  `
+  const response = await client.query({
+    query: GET_FAQs,
+  })
+  const fAQs = response?.data
+  return {
+    props: {
+      fAQs,
+    },
+  }
 }
