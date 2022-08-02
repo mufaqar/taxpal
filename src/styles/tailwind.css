@@ -5,3 +5,18 @@
 #__next {
   min-height: 100%;
 }
+.feature_image {
+  transition: .5s ease-in-out !important;
+}
+.opacity{
+  opacity: 1;
+}
+.contactsImg{
+  transform: translateX(0%);
+}
+.inventoryImg{
+  transform: translateX(-79%);
+}
+.reportingImg{
+  transform: translateX(-157%);
+}

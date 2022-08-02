@@ -1,218 +1,42 @@
-import { useId } from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
 import { Tab } from '@headlessui/react'
 import clsx from 'clsx'
-
 import { Container } from '@/components/Container'
-import screenshotContacts from '@/images/screenshots/contacts.png'
-import screenshotInventory from '@/images/screenshots/inventory.png'
-import screenshotProfitLoss from '@/images/screenshots/profit-loss.png'
 
-const features = [
-  {
-    name: 'Reporting',
-    summary: 'Stay on top of things with always up-to-date reporting features.',
-    description:
-      'We talked about reporting in the section above but we needed three items here, so mentioning it one more time for posterity.',
-    image: screenshotProfitLoss,
-    icon: function ReportingIcon() {
-      let id = useId()
-      return (
-        <>
-          <defs>
-            <linearGradient
-              id={id}
-              x1="11.5"
-              y1={18}
-              x2={36}
-              y2="15.5"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop offset=".194" stopColor="#fff" />
-              <stop offset={1} stopColor="#6692F1" />
-            </linearGradient>
-          </defs>
-          <path
-            d="m30 15-4 5-4-11-4 18-4-11-4 7-4-5"
-            stroke={`url(#${id})`}
-            strokeWidth={2}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </>
-      )
-    },
-  },
-  {
-    name: 'Inventory',
-    summary:
-      'Never lose track of what’s in stock with accurate inventory tracking.',
-    description:
-      'We don’t offer this as part of our software but that statement is inarguably true. Accurate inventory tracking would help you for sure.',
-    image: screenshotInventory,
-    icon: function InventoryIcon() {
-      return (
-        <>
-          <path
-            opacity=".5"
-            d="M8 17a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2Z"
-            fill="#fff"
-          />
-          <path
-            opacity=".3"
-            d="M8 24a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2Z"
-            fill="#fff"
-          />
-          <path
-            d="M8 10a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2Z"
-            fill="#fff"
-          />
-        </>
-      )
-    },
-  },
-  {
-    name: 'Contacts',
-    summary:
-      'Organize all of your contacts, service providers, and invoices in one place.',
-    description:
-      'This also isn’t actually a feature, it’s just some friendly advice. We definitely recommend that you do this, you’ll feel really organized and professional.',
-    image: screenshotContacts,
-    icon: function ContactsIcon() {
-      return (
-        <>
-          <path
-            opacity=".5"
-            d="M25.778 25.778c.39.39 1.027.393 1.384-.028A11.952 11.952 0 0 0 30 18c0-6.627-5.373-12-12-12S6 11.373 6 18c0 2.954 1.067 5.659 2.838 7.75.357.421.993.419 1.384.028.39-.39.386-1.02.036-1.448A9.959 9.959 0 0 1 8 18c0-5.523 4.477-10 10-10s10 4.477 10 10a9.959 9.959 0 0 1-2.258 6.33c-.35.427-.354 1.058.036 1.448Z"
-            fill="#fff"
-          />
-          <path
-            d="M12 28.395V28a6 6 0 0 1 12 0v.395A11.945 11.945 0 0 1 18 30c-2.186 0-4.235-.584-6-1.605ZM21 16.5c0-1.933-.5-3.5-3-3.5s-3 1.567-3 3.5 1.343 3.5 3 3.5 3-1.567 3-3.5Z"
-            fill="#fff"
-          />
-        </>
-      )
-    },
-  },
-]
-
-function Feature({ feature, isActive, className, ...props }) {
-  return (
-    <div
-      className={clsx(className, { 'opacity-75 hover:opacity-100': !isActive })}
-      {...props}
-    >
-      <div
-        className={clsx('w-9 rounded-lg', {
-          'bg-blue-600': isActive,
-          'bg-slate-500': !isActive,
-        })}
-      >
-        <svg aria-hidden="true" className="h-9 w-9" fill="none">
-          <feature.icon />
-        </svg>
-      </div>
-      <h3
-        className={clsx('mt-6 text-sm font-medium', {
-          'text-blue-600': isActive,
-          'text-slate-600': !isActive,
-        })}
-      >
-        {feature.name}
-      </h3>
-      <p className="mt-2 text-xl font-display text-slate-900">
-        {feature.summary}
-      </p>
-      <p className="mt-4 text-sm text-slate-600">{feature.description}</p>
-    </div>
-  )
-}
-
-function FeaturesMobile({feature}) {
-  return (
-    <div className="px-4 mt-20 -mx-4 space-y-10 overflow-hidden sm:-mx-6 sm:px-6 lg:hidden">
-      {feature.map((feature) => (
-        <div key={feature.name}>
-          {/* <Feature feature={feature} className="max-w-2xl mx-auto" isActive />
-          <div className="relative pb-10 mt-10">
-            <div className="absolute bottom-0 -inset-x-4 top-8 bg-slate-200 sm:-inset-x-6" />
-            <div className="relative mx-auto aspect-[844/428] w-[52.75rem] overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-900/5 ring-1 ring-slate-500/10">
-              <Image
-                src={feature.image}
-                alt=""
-                layout="fill"
-                sizes="52.75rem"
-              />
-            </div>
-          </div> */}
-        </div>
-      ))}
-    </div>
-  )
-}
-
-function FeaturesDesktop({feature}) {
-  console.log('feature', feature)
-
-  return (
-    <Tab.Group as="div" className="hidden lg:mt-20 lg:block">
-      {({ selectedIndex }) => (
-        <>
-          <Tab.List className="grid grid-cols-3 gap-x-8">
-            {features.map((feature, featureIndex) => (
-              <Feature
-                key={feature.name}
-                feature={{
-                  ...feature,
-                  name: (
-                    <Tab className="[&:not(:focus-visible)]:focus:outline-none">
-                      <span className="absolute inset-0" />
-                      {feature.name} 123
-                    </Tab>
-                  ),
-                }}
-                isActive={featureIndex === selectedIndex}
-                className="relative"
-              />
-            ))}
-          </Tab.List>
-          
-          <Tab.Panels className="relative py-16 mt-20 overflow-hidden rounded-4xl bg-slate-200 px-14 xl:px-16">
-            <div className="flex -mx-5">
-              {feature.map((feature, featureIndex) => (
-                <Tab.Panel
-                  static
-                  key={feature.title}
-                  className={clsx(
-                    'px-5 transition duration-500 ease-in-out [&:not(:focus-visible)]:focus:outline-none',
-                    {
-                      'opacity-60': featureIndex !== selectedIndex,
-                    }
-                  )}
-                  style={{ transform: `translateX(-${selectedIndex * 100}%)` }}
-                  aria-hidden={featureIndex !== selectedIndex}
-                >
-                  <div className="relative aspect-[844/428] w-[52.75rem] overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-900/5 ring-1 ring-slate-500/10">
-                    <Image
-                      src={feature.featuredImage.node.mediaItemUrl}
-                      alt=""
-                      layout="fill"
-                      sizes="52.75rem"
-                    />
-                  </div>
-                </Tab.Panel>
-              ))}
-            </div>
-            <div className="absolute inset-0 pointer-events-none rounded-4xl ring-1 ring-inset ring-slate-900/10" />
-          </Tab.Panels>
-        </>
-      )}
-    </Tab.Group>
-  )
-}
-
-export function SecondaryFeatures({featuresTwo}) {
+export function SecondaryFeatures({ featuresTwo }) {
   
+  console.log('feature2', featuresTwo);
+  
+  const handleChange = (name) =>{
+    if(name === 'Contacts'){
+      var m1 = document.querySelector('.feature_image');
+      var img = document.querySelector('._img');
+      m1.classList.remove('inventoryImg');
+      m1.classList.remove('reportingImg');
+      m1.classList.add('contactsImg');
+     
+    }
+    if(name === 'Inventory'){
+      var m1 = document.querySelector('.feature_image');
+      var img = document.querySelector('._img');
+      m1.classList.remove('contactsImg');
+      m1.classList.remove('reportingImg');
+      m1.classList.add('inventoryImg');
+      
+
+    }
+    if(name === 'Reporting'){
+      var m1 = document.querySelector('.feature_image');
+      var img = document.querySelector('._img');
+      m1.classList.remove('inventoryImg');
+      m1.classList.remove('contactsImg');
+      m1.classList.add('reportingImg');
+      
+    }
+    
+  }
+
   return (
     <section
       id="secondary-features"
@@ -232,8 +56,86 @@ export function SecondaryFeatures({featuresTwo}) {
             complicate your everyday business tasks instead.
           </p>
         </div>
-        <FeaturesMobile feature={featuresTwo} />
-        <FeaturesDesktop feature={featuresTwo} />
+
+
+        <div className="px-4 mt-20 -mx-4 space-y-10 overflow-hidden sm:-mx-6 sm:px-6 lg:hidden">
+          {featuresTwo.map((feature) => (
+            <div key={feature.name}>
+              {/* <Feature feature={feature} className="max-w-2xl mx-auto" isActive />
+          <div className="relative pb-10 mt-10">
+            <div className="absolute bottom-0 -inset-x-4 top-8 bg-slate-200 sm:-inset-x-6" />
+            <div className="relative mx-auto aspect-[844/428] w-[52.75rem] overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-900/5 ring-1 ring-slate-500/10">
+              <Image
+                src={feature.image}
+                alt=""
+                layout="fill"
+                sizes="52.75rem"
+              />
+            </div>
+          </div> */}
+            </div>
+          ))}
+        </div>
+
+        <Tab.Group as="div" className="hidden lg:mt-20 lg:block">
+          {({ selectedIndex }) => (
+            <>
+              <Tab.List className="grid grid-cols-3 gap-x-8">
+                {featuresTwo.map((feature, featureIndex) => (
+                  <div
+                    key={featureIndex}
+                    className="opacity-75 hover:opacity-100"
+                    onClick={()=>handleChange(feature.categories.nodes[0].name)}
+                  >
+                    <div className="rounded-lg w-9 _icon">
+                      <div aria-hidden="true" className="h-10 w-10 rounded-xl p-1 bg-[#8B97A8]" fill="none" >
+                        <Image src={feature.featureTwo.icon.mediaItemUrl} alt="" width={36} height={36}/>
+                      </div>
+                    </div>
+                    <h3 className="mt-6 text-sm font-medium">
+                      {feature.categories.nodes[0].name}
+                    </h3>
+                    <p className="mt-2 text-xl font-display text-slate-900">
+                      {feature.title}
+                    </p>
+                    <div
+                      className="mt-4 text-sm text-slate-600"
+                      dangerouslySetInnerHTML={{ __html: feature.content }}
+                    ></div>
+                  </div>
+                ))}
+              </Tab.List>
+
+              <Tab.Panels className="relative py-16 mt-20 overflow-hidden rounded-4xl bg-slate-200 px-14 xl:px-16 ">
+                <div className="flex -mx-5 feature_image">
+                  {featuresTwo.map((feature, featureIndex) => (
+                    <div
+                      static
+                      key={feature.title}
+                      className={clsx(
+                        'px-5 transition duration-500 ease-in-out [&:not(:focus-visible)]:focus:outline-none _img '
+                      )}
+                      style={{
+                      transform: `translateX(-${selectedIndex * 100}%)`,
+                      }}
+                      aria-hidden={featureIndex !== selectedIndex}
+                    >
+                      <div className="relative aspect-[844/428] w-[52.75rem] overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-900/5 ring-1 ring-slate-500/10">
+                        <Image
+                          src={feature.featuredImage.node.mediaItemUrl}
+                          alt=""
+                          layout="fill"
+                          sizes="52.75rem"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="absolute inset-0 pointer-events-none rounded-4xl ring-1 ring-inset ring-slate-900/10" />
+              </Tab.Panels>
+            </>
+          )}
+        </Tab.Group>
       </Container>
     </section>
   )

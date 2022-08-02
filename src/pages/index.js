@@ -95,9 +95,14 @@ export async function getStaticProps() {
               name
             }
           }
+          title
           content
           id
-          title
+          featureTwo {
+            icon {
+              mediaItemUrl
+            }
+          }
           featuredImage {
             node {
               mediaItemUrl
