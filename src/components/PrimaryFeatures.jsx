@@ -5,41 +5,9 @@ import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
 import backgroundImage from '@/images/background-features.jpg'
-import screenshotExpenses from '@/images/screenshots/expenses.png'
-import screenshotPayroll from '@/images/screenshots/payroll.png'
-import screenshotReporting from '@/images/screenshots/reporting.png'
-import screenshotVatReturns from '@/images/screenshots/vat-returns.png'
 
-const features = [
-  {
-    title: 'Payroll',
-    description:
-      "Keep track of everyone's salaries and whether or not they've been paid. Direct deposit not supported.",
-    image: screenshotPayroll,
-  },
-  {
-    title: 'Claim expenses',
-    description:
-      "All of your receipts organized into one place, as long as you don't mind typing in the data by hand.",
-    image: screenshotExpenses,
-  },
-  {
-    title: 'VAT handling',
-    description:
-      "We only sell our software to companies who don't deal with VAT at all, so technically we do all the VAT stuff they need.",
-    image: screenshotVatReturns,
-  },
-  {
-    title: 'Reporting',
-    description:
-      'Easily export your data into an Excel spreadsheet where you can do whatever the hell you want with it.',
-    image: screenshotReporting,
-  },
-]
 
 export function PrimaryFeatures({taxCompliances}) {
-
-  console.log('taxCompliances', taxCompliances);
   
   let [tabOrientation, setTabOrientation] = useState('horizontal')
 
@@ -125,36 +93,40 @@ export function PrimaryFeatures({taxCompliances}) {
                           {feature.title}
                         </Tab>
                       </h3>
-                      <p
+                      <div
                         className={clsx('mt-2 hidden text-sm lg:block', {
                           'text-white': selectedIndex === featureIndex,
                           'text-blue-100 group-hover:text-white':
                             selectedIndex !== featureIndex,
                         })}
+                        dangerouslySetInnerHTML={{__html: feature.content}}
                       >
-                        {feature.content}
-                      </p>
+                      
+                      </div>
                     </div>
                   ))}
                 </Tab.List>
               </div>
               <Tab.Panels className="lg:col-span-7">
-                {features.map((feature) => (
+                {taxCompliances.map((feature) => (
                   <Tab.Panel key={feature.title} unmount={false}>
                     <div className="relative sm:px-6 lg:hidden">
                       <div className="absolute -inset-x-4 -top-[6.5rem] -bottom-[4.25rem] bg-white/10 ring-1 ring-inset ring-white/10 sm:inset-x-0 sm:rounded-t-xl" />
-                      <p className="relative max-w-2xl mx-auto text-base text-white sm:text-center">
-                        {feature.content}
-                      </p>
+                      <div className="relative max-w-2xl mx-auto text-base text-white sm:text-center" 
+                      dangerouslySetInnerHTML={{__html: feature.content}}
+                      >
+                      
+                      </div>
                     </div>
                     <div className="relative mt-10 aspect-[1085/730] w-[45rem] overflow-hidden rounded-xl bg-slate-50 shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 lg:w-[67.8125rem]">
-                      {/* <Image
+                      
+                      <Image
                         src={feature.featuredImage.node.mediaItemUrl}
                         alt="feature"
                         layout="fill"
                         priority
                         sizes="(min-width: 1024px) 67.8125rem, (min-width: 640px) 100vw, 45rem"
-                      /> */}
+                      />
                     </div>
                   </Tab.Panel>
                 ))}

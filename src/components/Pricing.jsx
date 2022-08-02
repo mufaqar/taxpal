@@ -4,6 +4,7 @@ import { ButtonLink } from '@/components/Button'
 import { Container } from '@/components/Container'
 
 function Plan({ name, price, description, href, features, featured = false }) {
+
   return (
     <section
       className={clsx('flex flex-col rounded-3xl px-6 sm:px-8', {
@@ -29,8 +30,8 @@ function Plan({ name, price, description, href, features, featured = false }) {
           'text-slate-200': !featured,
         })}
       >
-        {features.map((feature) => (
-          <li key={feature} className="flex">
+        {features.map((feature, index) => (
+          <li key={index} className="flex">
             <svg
               aria-hidden="true"
               className={clsx('h-6 w-6 flex-none', {
@@ -52,7 +53,7 @@ function Plan({ name, price, description, href, features, featured = false }) {
                 strokeLinejoin="round"
               />
             </svg>
-            <span className="ml-4">{feature}</span>
+            <span className="ml-4">{feature.feature}</span>
           </li>
         ))}
       </ul>
@@ -69,7 +70,8 @@ function Plan({ name, price, description, href, features, featured = false }) {
   )
 }
 
-export function Pricing() {
+export function Pricing({pricingTables}) {
+  
   return (
     <section
       id="pricing"
@@ -105,51 +107,28 @@ export function Pricing() {
           </p>
         </div>
           <div className='grid max-w-2xl grid-cols-1 mt-16 -mx-4 gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:gap-x-8'>
-
+          
           <Plan
-            name="Starter"
-            price="Free"
-            description="Start for free"
-            href="/register"
-            features={[
-              'Up to 50 bookmarks',
-              'Bookmark Preview',
-              'Advanced Search',
-              'Bookmark Tags',
-              'Access on Mobile, Tablet',
-              'Unlimited Devices'
-            ]}
+            name= {pricingTables[2].pricingTable.planType}
+            price= {pricingTables[2].pricingTable.planPrice}
+            description= {pricingTables[2].pricingTable.shortDiscription}
+            href= {pricingTables[2].pricingTable.getStartedLink}
+            features= {pricingTables[2].pricingTable.featuresList}
           />
           <Plan
-            featured
-            name="Pro"
-            price="$2/month"
-            tip=""
-            description="Billed as $24 yearly (auto-renewal)"
-            href="/register"
-            features={[
-              'Unlimited Bookmarks',
-              'Bookmark Preview',
-              'Advanced Search',
-              'Bookmark Tags',
-              'Access on Mobile, Tablet',
-              'Unlimited Devices',
-              'Priority support'
-            ]}
+            featured = {pricingTables[1].pricingTable.featuredType}
+            name= {pricingTables[1].pricingTable.planType}
+            price= {pricingTables[1].pricingTable.planPrice}
+            description= {pricingTables[1].pricingTable.shortDiscription}
+            href= {pricingTables[1].pricingTable.getStartedLink}
+            features= {pricingTables[1].pricingTable.featuresList}
           />
            <Plan
-            name="Starter"
-            price="Free"
-            description="Start for free"
-            href="/register"
-            features={[
-              'Up to 50 bookmarks',
-              'Bookmark Preview',
-              'Advanced Search',
-              'Bookmark Tags',
-              'Access on Mobile, Tablet',
-              'Unlimited Devices'
-            ]}
+            name= {pricingTables[0].pricingTable.planType}
+            price= {pricingTables[0].pricingTable.planPrice}
+            description= {pricingTables[0].pricingTable.shortDiscription}
+            href= {pricingTables[0].pricingTable.getStartedLink}
+            features= {pricingTables[0].pricingTable.featuresList}
             />
           </div>       
       </Container>

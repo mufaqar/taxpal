@@ -11,7 +11,16 @@ import { PrimaryFeatures } from '@/components/PrimaryFeatures'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { Testimonials } from '@/components/Testimonials'
 
-export default function Home({ faqs, testimonials,taxCompliances }) {
+export default function Home({
+  faqs,
+  testimonials,
+  taxCompliances,
+  featuresTwo,
+  pricingTables,
+  ctaPage,
+  landingPage,
+}) {
+  // console.warn('landingPage', landingPage)
   return (
     <>
       <Head>
@@ -23,12 +32,12 @@ export default function Home({ faqs, testimonials,taxCompliances }) {
       </Head>
       <Header />
       <main>
-        <Hero />
-        <PrimaryFeatures taxCompliances={taxCompliances}/>
-        <SecondaryFeatures />
-        <CallToAction />
+        <Hero landingPage={landingPage} />
+        <PrimaryFeatures taxCompliances={taxCompliances} />
+        <SecondaryFeatures featuresTwo={featuresTwo} />
+        <CallToAction ctaPage={ctaPage} />
         <Testimonials testimonialss={testimonials} />
-        <Pricing />
+        <Pricing pricingTables={pricingTables} />
         <Faqs faqs={faqs} />
       </main>
       <Footer />
@@ -79,6 +88,58 @@ export async function getStaticProps() {
           }
         }
       }
+      featuresTwo {
+        nodes {
+          categories {
+            nodes {
+              name
+            }
+          }
+          content
+          id
+          title
+          featuredImage {
+            node {
+              mediaItemUrl
+            }
+          }
+        }
+      }
+      pricingTables {
+        nodes {
+          title
+          id
+          pricingTable {
+            planPrice
+            planType
+            shortDiscription
+            getStartedLink
+            featuredType
+            featuresList {
+              feature
+            }
+          }
+        }
+      }
+      page(id: "74", idType: DATABASE_ID) {
+        # CTA PAGE
+        cta {
+          buttonLink
+          buttonText
+          heading
+          overview
+        }
+      }
+      pageBy(pageId: 80) {
+        #Landing Page
+        landing {
+          buttonLink
+          buttonText
+          headingBeforeSpan
+          headingSpan
+          overview
+        }
+      }
     }
   `
   const response = await client.query({
@@ -88,12 +149,20 @@ export async function getStaticProps() {
   const faqs = response?.data?.fAQs.nodes
   const testimonials = response?.data?.testimonials.nodes
   const taxCompliances = response?.data?.taxCompliances.nodes
+  const featuresTwo = response?.data?.featuresTwo.nodes
+  const pricingTables = response?.data?.pricingTables.nodes
+  const ctaPage = response?.data?.page.cta
+  const landingPage = response?.data?.pageBy.landing
 
   return {
     props: {
       faqs,
       testimonials,
       taxCompliances,
+      featuresTwo,
+      pricingTables,
+      ctaPage,
+      landingPage,
     },
   }
 }
