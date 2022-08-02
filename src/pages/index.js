@@ -10,6 +10,7 @@ import { Pricing } from '@/components/Pricing'
 import { PrimaryFeatures } from '@/components/PrimaryFeatures'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { Testimonials } from '@/components/Testimonials'
+import HeroImage from '@/components/HeroImage'
 
 export default function Home({
   faqs,
@@ -19,6 +20,7 @@ export default function Home({
   pricingTables,
   ctaPage,
   landingPage,
+  LandingImage
 }) {
   // console.warn('landingPage', landingPage)
   return (
@@ -33,6 +35,7 @@ export default function Home({
       <Header />
       <main>
         <Hero landingPage={landingPage} />
+        <HeroImage LandingImage={LandingImage}/>
         <PrimaryFeatures taxCompliances={taxCompliances} />
         <SecondaryFeatures featuresTwo={featuresTwo} />
         <CallToAction ctaPage={ctaPage} />
@@ -144,6 +147,11 @@ export async function getStaticProps() {
           headingSpan
           overview
         }
+        featuredImage {
+          node {
+            mediaItemUrl
+          }
+        }
       }
     }
   `
@@ -158,6 +166,7 @@ export async function getStaticProps() {
   const pricingTables = response?.data?.pricingTables.nodes
   const ctaPage = response?.data?.page.cta
   const landingPage = response?.data?.pageBy.landing
+  const LandingImage = response?.data?.pageBy.featuredImage
 
   return {
     props: {
@@ -168,6 +177,7 @@ export async function getStaticProps() {
       pricingTables,
       ctaPage,
       landingPage,
+      LandingImage,
     },
   }
 }

@@ -5,36 +5,30 @@ import clsx from 'clsx'
 import { Container } from '@/components/Container'
 
 export function SecondaryFeatures({ featuresTwo }) {
-  
-  console.log('feature2', featuresTwo);
-  
-  const handleChange = (name) =>{
-    if(name === 'Contacts'){
-      var m1 = document.querySelector('.feature_image');
-      var img = document.querySelector('._img');
-      m1.classList.remove('inventoryImg');
-      m1.classList.remove('reportingImg');
-      m1.classList.add('contactsImg');
-     
-    }
-    if(name === 'Inventory'){
-      var m1 = document.querySelector('.feature_image');
-      var img = document.querySelector('._img');
-      m1.classList.remove('contactsImg');
-      m1.classList.remove('reportingImg');
-      m1.classList.add('inventoryImg');
-      
+  console.log('feature2', featuresTwo)
 
+  const handleChange = (name) => {
+    if (name === 'Contacts') {
+      var m1 = document.querySelector('.feature_image')
+      var img = document.querySelector('._img')
+      m1.classList.remove('inventoryImg')
+      m1.classList.remove('reportingImg')
+      m1.classList.add('contactsImg')
     }
-    if(name === 'Reporting'){
-      var m1 = document.querySelector('.feature_image');
-      var img = document.querySelector('._img');
-      m1.classList.remove('inventoryImg');
-      m1.classList.remove('contactsImg');
-      m1.classList.add('reportingImg');
-      
+    if (name === 'Inventory') {
+      var m1 = document.querySelector('.feature_image')
+      var img = document.querySelector('._img')
+      m1.classList.remove('contactsImg')
+      m1.classList.remove('reportingImg')
+      m1.classList.add('inventoryImg')
     }
-    
+    if (name === 'Reporting') {
+      var m1 = document.querySelector('.feature_image')
+      var img = document.querySelector('._img')
+      m1.classList.remove('inventoryImg')
+      m1.classList.remove('contactsImg')
+      m1.classList.add('reportingImg')
+    }
   }
 
   return (
@@ -57,22 +51,20 @@ export function SecondaryFeatures({ featuresTwo }) {
           </p>
         </div>
 
-
         <div className="px-4 mt-20 -mx-4 space-y-10 overflow-hidden sm:-mx-6 sm:px-6 lg:hidden">
           {featuresTwo.map((feature) => (
-            <div key={feature.name}>
-              {/* <Feature feature={feature} className="max-w-2xl mx-auto" isActive />
-          <div className="relative pb-10 mt-10">
-            <div className="absolute bottom-0 -inset-x-4 top-8 bg-slate-200 sm:-inset-x-6" />
-            <div className="relative mx-auto aspect-[844/428] w-[52.75rem] overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-900/5 ring-1 ring-slate-500/10">
-              <Image
-                src={feature.image}
-                alt=""
-                layout="fill"
-                sizes="52.75rem"
-              />
-            </div>
-          </div> */}
+            <div key={feature.title}>
+              <div className="relative pb-10 mt-10">
+                <div className="absolute bottom-0 -inset-x-4 top-8 bg-slate-200 sm:-inset-x-6" />
+                <div className="relative mx-auto aspect-[844/428] w-[52.75rem] overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-900/5 ring-1 ring-slate-500/10">
+                  <Image
+                    src={feature.featuredImage.node.mediaItemUrl}
+                    alt=""
+                    layout="fill"
+                    sizes="52.75rem"
+                  />
+                </div>
+              </div>
             </div>
           ))}
         </div>
@@ -85,11 +77,22 @@ export function SecondaryFeatures({ featuresTwo }) {
                   <div
                     key={featureIndex}
                     className="opacity-75 hover:opacity-100"
-                    onClick={()=>handleChange(feature.categories.nodes[0].name)}
+                    onClick={() =>
+                      handleChange(feature.categories.nodes[0].name)
+                    }
                   >
-                    <div className="rounded-lg w-9 _icon">
-                      <div aria-hidden="true" className="h-10 w-10 rounded-xl p-1 bg-[#8B97A8]" fill="none" >
-                        <Image src={feature.featureTwo.icon.mediaItemUrl} alt="" width={36} height={36}/>
+                    <div className="rounded-lg _icon w-9">
+                      <div
+                        aria-hidden="true"
+                        className="h-10 w-10 rounded-xl bg-[#8B97A8] p-1"
+                        fill="none"
+                      >
+                        <Image
+                          src={feature.featureTwo.icon.mediaItemUrl}
+                          alt=""
+                          width={36}
+                          height={36}
+                        />
                       </div>
                     </div>
                     <h3 className="mt-6 text-sm font-medium">
@@ -113,10 +116,10 @@ export function SecondaryFeatures({ featuresTwo }) {
                       static
                       key={feature.title}
                       className={clsx(
-                        'px-5 transition duration-500 ease-in-out [&:not(:focus-visible)]:focus:outline-none _img '
+                        '_img px-5 transition duration-500 ease-in-out [&:not(:focus-visible)]:focus:outline-none '
                       )}
                       style={{
-                      transform: `translateX(-${selectedIndex * 100}%)`,
+                        transform: `translateX(-${selectedIndex * 100}%)`,
                       }}
                       aria-hidden={featureIndex !== selectedIndex}
                     >
