@@ -109,7 +109,6 @@ export function SecondaryFeatures({ featuresTwo }) {
         <div className="-mx-4 mt-20 space-y-10 overflow-hidden px-4 sm:-mx-6 sm:px-6 lg:hidden">
           {feature_two.map((feature, index) => (
             <div key={feature.title}>
-            {console.log('??????????', feature)}
               <div>
                 <div className="_icon w-9 rounded-lg">
                   <div
