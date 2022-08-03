@@ -22,7 +22,8 @@ export default function Login() {
             Sign in to your account
           </h2>
           <p className="mt-2 text-sm text-gray-700">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. adipiscing
+            elit.
           </p>
         </div>
         <div className="mt-10">
