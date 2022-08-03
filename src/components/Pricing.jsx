@@ -110,7 +110,7 @@ export function Pricing({pricingTables}) {
             {landing.overview}
           </p>
         </div>
-          <div className='grid max-w-2xl grid-cols-1 mt-16 -mx-4 gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-2 xl:mx-0 xl:gap-x-8'>
+          <div className='grid max-w-2xl grid-cols-1 mt-16 -mx-4 lg:px-48 gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-2 xl:mx-0 xl:gap-x-8'>
           
           <Plan
             name= {pricing_Tables[0].pricingTable.planType}
