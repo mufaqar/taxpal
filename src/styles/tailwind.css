@@ -20,3 +20,12 @@
 .reportingImg{
   transform: translateX(-157%);
 }
+.iconbg{
+  background: #2563EB;
+}
+.textcolor{
+  color: #2563EB;
+}
+.iconImg{
+  filter: invert(1) !important;
+}
