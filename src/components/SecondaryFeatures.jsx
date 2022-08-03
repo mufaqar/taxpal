@@ -5,7 +5,10 @@ import clsx from 'clsx'
 import { Container } from '@/components/Container'
 
 export function SecondaryFeatures({ featuresTwo }) {
-  console.log('feature2', featuresTwo)
+
+  let feature_two = featuresTwo.featuresTwo
+  let landing = featuresTwo.landingPage.featureTwo
+
 
   const handleChange = (name) => {
     if (name === 'Contacts') {
@@ -43,16 +46,15 @@ export function SecondaryFeatures({ featuresTwo }) {
             id="secondary-features-title"
             className="text-3xl tracking-tight font-display text-slate-900 sm:text-4xl"
           >
-            Simplify everyday business tasks.
+            {landing.title}
           </h2>
           <p className="mt-4 text-lg tracking-tight text-slate-700">
-            Because you’d probably be a little confused if we suggested you
-            complicate your everyday business tasks instead.
+            {landing.overview}
           </p>
         </div>
 
         <div className="px-4 mt-20 -mx-4 space-y-10 overflow-hidden sm:-mx-6 sm:px-6 lg:hidden">
-          {featuresTwo.map((feature) => (
+          {feature_two.map((feature) => (
             <div key={feature.title}>
               <div className="relative pb-10 mt-10">
                 <div className="absolute bottom-0 -inset-x-4 top-8 bg-slate-200 sm:-inset-x-6" />
@@ -73,7 +75,7 @@ export function SecondaryFeatures({ featuresTwo }) {
           {({ selectedIndex }) => (
             <>
               <Tab.List className="grid grid-cols-3 gap-x-8">
-                {featuresTwo.map((feature, featureIndex) => (
+                {feature_two.map((feature, featureIndex) => (
                   <div
                     key={featureIndex}
                     className="opacity-75 hover:opacity-100"
@@ -111,7 +113,7 @@ export function SecondaryFeatures({ featuresTwo }) {
 
               <Tab.Panels className="relative py-16 mt-20 overflow-hidden rounded-4xl bg-slate-200 px-14 xl:px-16 ">
                 <div className="flex -mx-5 feature_image">
-                  {featuresTwo.map((feature, featureIndex) => (
+                  {feature_two.map((feature, featureIndex) => (
                     <div
                       static
                       key={feature.title}

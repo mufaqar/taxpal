@@ -4,6 +4,10 @@ import backgroundImage from '@/images/background-faqs.jpg'
 
 
 export function Faqs({faqs}) {
+
+  let faq = faqs.faqs
+  let landing = faqs.landingPage.faq
+
   return (
     <section
       id="faq"
@@ -11,7 +15,7 @@ export function Faqs({faqs}) {
       className="relative py-20 overflow-hidden bg-slate-50 sm:py-32"
     >
       <h2 id="faq-title" className="sr-only">
-        Frequently asked questions
+      {landing.overview}
       </h2>
       <div className="absolute top-0 left-1/2 -translate-x-[30%] -translate-y-[25%]">
         <Image
@@ -26,15 +30,14 @@ export function Faqs({faqs}) {
       <Container className="relative">
         <div className="max-w-2xl mx-auto lg:mx-0">
           <p className="text-3xl tracking-tight font-display text-slate-900 sm:text-4xl">
-            Frequently asked questions
+          {landing.title}
           </p>
           <p className="mt-4 text-lg tracking-tight text-slate-700">
-            If you can’t find what you’re looking for, email our support team
-            and if you’re lucky someone will get back to you.
+            {landing.overview}
           </p>
         </div>
         <ul className="grid max-w-2xl grid-cols-1 gap-8 mx-auto mt-16 lg:max-w-none lg:grid-cols-3">
-          {faqs.map((column, columnIndex) => (
+          {faq.map((column, columnIndex) => (
             <li key={columnIndex}>
               <ul className="space-y-8">
                 {column.faqRow.row.map((faq, faqIndex) => (

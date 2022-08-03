@@ -20,9 +20,30 @@ export default function Home({
   pricingTables,
   ctaPage,
   landingPage,
-  LandingImage
+  LandingImage,
 }) {
   // console.warn('landingPage', landingPage)
+  let featureOne = {
+    taxCompliances,
+    landingPage,
+  }
+  let featureTwo = {
+    featuresTwo,
+    landingPage,
+  }
+  let testimonial = {
+    testimonials,
+    landingPage,
+  }
+  let faq = {
+    faqs,
+    landingPage,
+  }
+  let pricing_table = {
+    pricingTables,
+    landingPage,
+  }
+
   return (
     <>
       <Head>
@@ -32,16 +53,17 @@ export default function Home({
           content="Most bookkeeping software is accurate, but hard to use. We make the opposite trade-off, and hope you don’t get audited."
         />
       </Head>
+
       <Header />
       <main>
         <Hero landingPage={landingPage} />
-        <HeroImage LandingImage={LandingImage}/>
-        <PrimaryFeatures taxCompliances={taxCompliances} />
-        <SecondaryFeatures featuresTwo={featuresTwo} />
+        <HeroImage LandingImage={LandingImage} />
+        <PrimaryFeatures taxCompliances={featureOne} />
+        <SecondaryFeatures featuresTwo={featureTwo} />
         <CallToAction ctaPage={ctaPage} />
-        <Testimonials testimonialss={testimonials} />
-        <Pricing pricingTables={pricingTables} />
-        <Faqs faqs={faqs} />
+        <Testimonials testimonials={testimonial} />
+        <Pricing pricingTables={pricing_table} />
+        <Faqs faqs={faq} />
       </main>
       <Footer />
     </>
@@ -146,6 +168,27 @@ export async function getStaticProps() {
           headingBeforeSpan
           headingSpan
           overview
+          faq {
+            title
+            overview
+          }
+          featureOne {
+            overview
+            title
+          }
+          featureTwo {
+            overview
+            title
+          }
+          pricingTable {
+            overview
+            titleAfterSpan
+            titleInSpan
+          }
+          testimonial {
+            overview
+            title
+          }
         }
         featuredImage {
           node {

@@ -8,7 +8,11 @@ import backgroundImage from '@/images/background-features.jpg'
 
 
 export function PrimaryFeatures({taxCompliances}) {
-  
+
+  let taxCompliance = taxCompliances.taxCompliances;
+  let Landing = taxCompliances.landingPage.featureOne
+
+
   let [tabOrientation, setTabOrientation] = useState('horizontal')
 
   useEffect(() => {
@@ -48,11 +52,10 @@ export function PrimaryFeatures({taxCompliances}) {
             id="features-title"
             className="text-3xl tracking-tight text-white font-display sm:text-4xl md:text-5xl"
           >
-            Everything you need to run your books.
+            {Landing.title}
           </h2>
           <p className="mt-6 text-lg tracking-tight text-blue-100">
-            Well everything you need if you aren’t that picky about minor
-            details like tax compliance.
+            {Landing.overview}
           </p>
         </div>
         <Tab.Group
@@ -64,7 +67,7 @@ export function PrimaryFeatures({taxCompliances}) {
             <>
               <div className="flex pb-4 -mx-4 overflow-x-auto sm:mx-0 sm:overflow-visible sm:pb-0 lg:col-span-5">
                 <Tab.List className="relative z-10 flex px-4 space-x-4 whitespace-nowrap sm:mx-auto sm:px-0 lg:mx-0 lg:block lg:space-y-1 lg:space-x-0 lg:whitespace-normal">
-                  {taxCompliances.map((feature, featureIndex) => (
+                  {taxCompliance.map((feature, featureIndex) => (
                     <div
                       key={feature.title}
                       className={clsx(
@@ -108,7 +111,7 @@ export function PrimaryFeatures({taxCompliances}) {
                 </Tab.List>
               </div>
               <Tab.Panels className="lg:col-span-7">
-                {taxCompliances.map((feature) => (
+                {taxCompliance.map((feature) => (
                   <Tab.Panel key={feature.title} unmount={false}>
                     <div className="relative sm:px-6 lg:hidden">
                       <div className="absolute -inset-x-4 -top-[6.5rem] -bottom-[4.25rem] bg-white/10 ring-1 ring-inset ring-white/10 sm:inset-x-0 sm:rounded-t-xl" />

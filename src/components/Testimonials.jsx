@@ -3,7 +3,10 @@ import { Container } from '@/components/Container'
 
 
 
-export function Testimonials({testimonialss}) {
+export function Testimonials({testimonials}) {
+
+  let testimonial = testimonials.testimonials
+  let landing = testimonials.landingPage.testimonial
 
   return (
     <section
@@ -17,16 +20,14 @@ export function Testimonials({testimonialss}) {
             id="testimonials-title"
             className="text-3xl tracking-tight font-display text-slate-900 sm:text-4xl"
           >
-            Loved by businesses worldwide.
+            {landing.title}
           </h2>
           <p className="mt-4 text-lg tracking-tight text-slate-700">
-            Our software is so simple that people can’t help but fall in love
-            with it. Simplicity is easy when you just skip tons of
-            mission-critical features.
+            {landing.overview}
           </p>
         </div>
         <ul className="grid max-w-2xl grid-cols-1 gap-6 mx-auto mt-16 sm:gap-8 lg:mt-20 lg:max-w-none lg:grid-cols-3">
-          {testimonialss.map((column, columnIndex) => (
+          {testimonial.map((column, columnIndex) => (
             <li key={columnIndex}>
               <ul className="space-y-6 sm:space-y-8">
                 {column.testimonial.row.map((testimonial, testimonialIndex) => (

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Container } from './Container'
 
 export default function HeroImage({LandingImage}) {
-    console.log('LandingImage', LandingImage)
+
   return (
     <Container>
         <div className='mb-20'>
